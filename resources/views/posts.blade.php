@@ -3,10 +3,9 @@
         <title>Testing</title>
     </head>
     <body>
-        <div>
-            <h1><a href="post/first-post">First Post</a></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur expedita laborum numquam odio provident, sint temporibus veniam? Architecto distinctio earum fuga itaque libero molestias quae quaerat quod recusandae tenetur.</p>
-        </div>
+        @foreach($posts as $post)
+            {!! $post !!}
+        @endforeach
         <div>
             <h1><a href="post/second-post">Second Post</a></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur expedita laborum numquam odio provident, sint temporibus veniam? Architecto distinctio earum fuga itaque libero molestias quae quaerat quod recusandae tenetur.</p>
