@@ -37,19 +37,9 @@ class Post
         foreach ($files as $file) {
             $document = YamlFrontMatter::parseFile($file);
 
-            $posts[] = [
-                'title' => $document->matter('title'),
-                'body' => $document->body(),
-                'excerpt' => $document->matter('excerpt'),
-                'date' => $document->matter('date'),
-                'slug' => $document->matter('slug'),
-            ];
+            $posts[] = new Post($document->matter('title'), $document->matter('excerpt'), $document->matter('date'), $document->body(), $document->matter('slug'));
         }
 
         return $posts;
-
-        return array_map(function ($file) {
-            return $file->getContents();
-        }, $files);
     }
 }
