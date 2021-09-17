@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
@@ -14,13 +15,13 @@ use App\Models\Post;
 |
 */
 
-Route::get('/', function () {
-    return view('posts', [
-        'posts' => Post::all(),
-    ]);
-});
+//Route::get('/', function () {
+//    return view('posts', [
+//        'posts' => Post::all(),
+//    ]);
+//});
 
-R
+Route::get('/', [PostController::class, 'index']);
 
 Route::get('/post/{slug}', function ($slug) {
       return view('post', [

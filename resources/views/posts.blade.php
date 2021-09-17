@@ -8,7 +8,10 @@
                 <a href="/post/{{ $post->slug }}">{{ $post->title }}</a>
             </h1>
             {!! $post->excerpt !!}
-            <p>{{ $post->date }}</p>
+            <pre>
+                {{ $post }}
+            </pre>
+{{--            <p>Posted {{ $post->created_at->diffForHumans() }} by {{ $post->author->name }}</p>--}}
         @endforeach
     </body>
 </html>
