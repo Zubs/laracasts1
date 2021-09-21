@@ -17,7 +17,6 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        ddd($posts[0]->user());
         return view('posts')->with('posts', $posts);
     }
 
