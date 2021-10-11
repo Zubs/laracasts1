@@ -17,8 +17,8 @@ class Post extends Model
 
     protected $dates = ['created_at'];
 
-    public function user () {
-        return $this->belongsTo(User::class, 'author');
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
     public function category()

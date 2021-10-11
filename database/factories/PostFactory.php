@@ -36,7 +36,7 @@ class PostFactory extends Factory
             'excerpt' => Str::words($body, 25),
             'slug' => $slug,
             'body' => $body,
-            'user_id' => User::first()->id,
+            'user_id' => random_int(1, 5),
             'category_id' => random_int(1, 3),
         ];
     }
