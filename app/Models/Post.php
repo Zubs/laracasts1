@@ -9,6 +9,12 @@ class Post extends Model
 {
     use HasFactory;
 
+    // Fields that can be mass assigned
+    protected $fillable = ['title', 'excerpt', 'body', 'slug'];
+
+    // Fields that cannot be mass assigned
+    protected $guarded = ['id'];
+
     protected $dates = ['created_at'];
 
     public function user () {

@@ -26,7 +26,3 @@ Route::get('/categories/{category:slug}', [PostController::class, 'category']);
 Route::get('/create-post', function () {
     return redirect()->action([PostController::class, 'index']);
 });
-
-Route::get('/post/{id}', function () {
-    return redirect()->action([PostController::class, 'index']);
-})->name('view-post');
