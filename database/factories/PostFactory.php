@@ -37,7 +37,7 @@ class PostFactory extends Factory
             'slug' => $slug,
             'body' => $body,
             'user_id' => User::first()->id,
-            'category_id' => 1,
+            'category_id' => random_int(1, 3),
         ];
     }
 }

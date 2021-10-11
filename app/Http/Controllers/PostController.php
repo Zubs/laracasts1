@@ -16,14 +16,9 @@ class PostController extends Controller
         return view('posts')->with('posts', $posts);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function category (Category $category)
     {
-        // Code here
+        return view('posts')->with('posts', $category->posts);
     }
 
     /**
