@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
@@ -15,16 +17,16 @@ use App\Models\Post;
 |
 */
 
-//Route::get('/', function () {
-//    return view('posts', [
-//        'posts' => Post::all(),
-//    ]);
-//});
-
 Route::get('/', [PostController::class, 'index']);
 
-Route::get('/post/{slug}', function ($slug) {
-      return view('post', [
-          'post' => Post::findOrFail($slug),
-      ]);
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+Route::get('/categories/{category:slug}', [PostController::class, 'category']);
+
+Route::get('/create-post', function () {
+    return redirect()->action([PostController::class, 'index']);
 });
+
+Route::get('/post/{id}', function () {
+    return redirect()->action([PostController::class, 'index']);
+})->name('view-post');
