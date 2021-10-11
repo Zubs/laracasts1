@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -36,8 +37,8 @@ class PostFactory extends Factory
             'excerpt' => Str::words($body, 25),
             'slug' => $slug,
             'body' => $body,
-            'user_id' => random_int(1, 5),
-            'category_id' => random_int(1, 3),
+            'user_id' => User::factory(),
+            'category_id' => Category::factory(),
         ];
     }
 }

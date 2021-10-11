@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         Post::truncate();
         Category::truncate();
 
-        User::factory(5)->create();
-        $this->call([PostSeeder::class, CategorySeeder::class]);
+        // User::factory(5)->create();
+        $this->call([PostSeeder::class]);
     }
 }

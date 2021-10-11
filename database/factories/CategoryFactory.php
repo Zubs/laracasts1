@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Psy\Util\Str;
 
 class CategoryFactory extends Factory
 {
@@ -21,8 +22,11 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->word;
+
         return [
-            //
+            'name' => $name,
+            'slug' => \Illuminate\Support\Str::slug($name),
         ];
     }
 }
