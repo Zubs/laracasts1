@@ -17,11 +17,13 @@ use App\Models\Post;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('index');
 
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('show');
 
-Route::get('/categories/{category:slug}', [PostController::class, 'category']);
+Route::get('/categories/{category:slug}', [PostController::class, 'category'])->name('category');
+
+Route::get('/authors/{user}', [PostController::class, 'author'])->name('author');
 
 Route::get('/create-post', function () {
     return redirect()->action([PostController::class, 'index']);
