@@ -40,7 +40,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return $post;
+        return view('post')->with('post', $post->load('author', 'category'));
     }
 
     public function edit(Post $post)
