@@ -15,7 +15,11 @@ class Post extends Model
     // Fields that cannot be mass assigned
     protected $guarded = ['id'];
 
+    // Dates that may be formatted to be human readable
     protected $dates = ['created_at'];
+
+    // Relationships that'd always be auto-loaded
+    // protected $with = ['author', 'category'];
 
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
