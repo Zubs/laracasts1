@@ -13,13 +13,17 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->with('category', 'author')->get();
+        $categories = Category::all();
 
-        return view('posts')->with('posts', $posts);
+        return view('posts')->with('posts', $posts)->with('categories', $categories);
     }
 
     public function category (Category $category)
     {
-        return view('posts')->with('posts', $category->posts->load('category', 'author'));
+        return view('posts')
+            ->with('posts', $category->posts->load('category', 'author'))
+            ->with('categories', Category::all())
+            ->with('currentCategory', $category);
     }
 
     public function author ($user)
@@ -30,7 +34,7 @@ class PostController extends Controller
             throw new ModelNotFoundException();
         }
 
-        return view('posts')->with('posts', $user->posts->load('category', 'author'));
+        return view('posts')->with('posts', $user->posts->load('category', 'author'))->with('categories', Category::all());
     }
 
     public function store(Request $request)
