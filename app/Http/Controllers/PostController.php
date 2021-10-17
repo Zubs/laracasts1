@@ -13,9 +13,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->filter(request()->only('search', 'category'))->with('category', 'author')->get();
-        $categories = Category::all();
 
-        return view('posts')->with('posts', $posts)->with('categories', $categories);
+        return view('posts.index')->with('posts', $posts);
     }
 
     public function author ($user)
@@ -26,7 +25,7 @@ class PostController extends Controller
             throw new ModelNotFoundException();
         }
 
-        return view('posts')->with('posts', $user->posts->load('category', 'author'))->with('categories', Category::all());
+        return view('posts.index')->with('posts', $user->posts->load('category', 'author'));
     }
 
     public function store(Request $request)
@@ -36,7 +35,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('post')->with('post', $post->load('author', 'category'));
+        return view('posts.show')->with('post', $post->load('author', 'category'));
     }
 
     public function edit(Post $post)
