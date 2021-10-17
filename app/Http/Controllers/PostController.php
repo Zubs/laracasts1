@@ -22,8 +22,7 @@ class PostController extends Controller
     {
         return view('posts')
             ->with('posts', $category->posts->load('category', 'author'))
-            ->with('categories', Category::all())
-            ->with('currentCategory', $category);
+            ->with('categories', Category::all());
     }
 
     public function author ($user)
