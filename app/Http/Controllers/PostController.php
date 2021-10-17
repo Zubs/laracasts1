@@ -12,17 +12,10 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->filter(request()->only('search'))->with('category', 'author')->get();
+        $posts = Post::latest()->filter(request()->only('search', 'category'))->with('category', 'author')->get();
         $categories = Category::all();
 
         return view('posts')->with('posts', $posts)->with('categories', $categories);
-    }
-
-    public function category (Category $category)
-    {
-        return view('posts')
-            ->with('posts', $category->posts->load('category', 'author'))
-            ->with('categories', Category::all());
     }
 
     public function author ($user)

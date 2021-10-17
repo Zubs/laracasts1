@@ -28,6 +28,10 @@ class Post extends Model
                 ->where('title', 'like', '%' . $filters['search'] . '%')
                 ->orWhere('body', 'like', '%' . $filters['search'] . '%');
         }
+
+        if ($filters['category'] ?? false) {
+            $query->whereHas('category', fn ($query) => $query->where('slug', $filters['category']));
+        }
     }
 
     public function author() {
