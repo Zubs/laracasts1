@@ -21,6 +21,15 @@ class Post extends Model
     // Relationships that'd always be auto-loaded
     // protected $with = ['author', 'category'];
 
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query
+                ->where('title', 'like', '%' . $filters['search'] . '%')
+                ->orWhere('body', 'like', '%' . $filters['search'] . '%');
+        }
+    }
+
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }
