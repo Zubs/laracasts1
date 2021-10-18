@@ -12,20 +12,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->filter(request()->only('search', 'category'))->with('category', 'author')->get();
+        $posts = Post::latest()->filter(request()->only('search', 'category', 'author'))->with('category', 'author')->get();
 
         return view('posts.index')->with('posts', $posts);
-    }
-
-    public function author ($user)
-    {
-        $user = User::where('username', $user)->orWhere('slug', $user)->first();
-
-        if (!$user) {
-            throw new ModelNotFoundException();
-        }
-
-        return view('posts.index')->with('posts', $user->posts->load('category', 'author'));
     }
 
     public function store(Request $request)

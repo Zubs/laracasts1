@@ -32,6 +32,14 @@ class Post extends Model
         if ($filters['category'] ?? false) {
             $query->whereHas('category', fn ($query) => $query->where('slug', $filters['category']));
         }
+
+        if ($filters['author'] ?? false) {
+            $query->whereHas('author',
+                fn ($query) =>
+                $query
+                    ->where('username', $filters['author']))
+                    ->orWhere('slug', $filters['author']);
+        }
     }
 
     public function author() {
