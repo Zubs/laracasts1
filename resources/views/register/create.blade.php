@@ -15,6 +15,7 @@
                             <h3 class="pt-4 mb-2 text-2xl">Create A New Account</h3>
                         </div>
                         <form class="px-8 pt-6 pb-8 mb-4 bg-gray-100 rounded" method="POST" action="{{ route('register.store') }}">
+                            @csrf
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
                                     Name
@@ -22,8 +23,10 @@
                                 <input
                                     class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="name"
+                                    name="name"
                                     type="text"
                                     placeholder="Enter Full Name..."
+                                    required
                                 />
                             </div>
                             <div class="mb-4">
@@ -33,8 +36,10 @@
                                 <input
                                     class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="username"
+                                    name="username"
                                     type="text"
                                     placeholder="Enter Username..."
+                                    required
                                 />
                             </div>
                             <div class="mb-4">
@@ -44,8 +49,10 @@
                                 <input
                                     class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="email"
+                                    name="email"
                                     type="email"
                                     placeholder="Enter Email Address..."
+                                    required
                                 />
                             </div>
                             <div class="mb-4">
@@ -55,14 +62,16 @@
                                 <input
                                     class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="password"
+                                    name="password"
                                     type="password"
                                     placeholder="Enter Password..."
+                                    required
                                 />
                             </div>
                             <div class="mb-6 text-center">
                                 <button
                                     class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-500 focus:outline-none focus:shadow-outline"
-                                    type="button"
+                                    type="submit"
                                 >
                                     Create Account
                                 </button>
