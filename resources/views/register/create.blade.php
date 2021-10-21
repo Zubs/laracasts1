@@ -25,9 +25,12 @@
                                     id="name"
                                     name="name"
                                     type="text"
+                                    value="{{ old('name') }}"
                                     placeholder="Enter Full Name..."
-                                    required
                                 />
+                                @error('name')
+                                    <p class="bg-red-100 border border-red-400 text-red-700 rounded relative mt-2 text-xs">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
@@ -38,9 +41,13 @@
                                     id="username"
                                     name="username"
                                     type="text"
+                                    value="{{ old('username') }}"
                                     placeholder="Enter Username..."
                                     required
                                 />
+                                @error('username')
+                                    <p class="bg-red-100 border border-red-400 text-red-700 rounded relative mt-2 text-xs">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
@@ -51,9 +58,13 @@
                                     id="email"
                                     name="email"
                                     type="email"
+                                    value="{{ old('email') }}"
                                     placeholder="Enter Email Address..."
                                     required
                                 />
+                                @error('email')
+                                    <p class="bg-red-100 border border-red-400 text-red-700 rounded relative mt-2 text-xs">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
@@ -67,6 +78,9 @@
                                     placeholder="Enter Password..."
                                     required
                                 />
+                                @error('password')
+                                    <p class="bg-red-100 border border-red-400 text-red-700 rounded relative mt-2 text-xs">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="mb-6 text-center">
                                 <button
