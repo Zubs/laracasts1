@@ -23,7 +23,6 @@ class RegisterController extends Controller
             'password' => ['string', 'between:8,20', 'max:255']
         ]);
 
-        $fields['password'] = Hash::make($fields['password']);
         $fields['slug'] = Str::slug($fields['name']);
 
         $user = User::create($fields);
