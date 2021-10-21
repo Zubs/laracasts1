@@ -27,6 +27,6 @@ class RegisterController extends Controller
 
         $user = User::create($fields);
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success', 'Your account has been created successfully');
     }
 }
