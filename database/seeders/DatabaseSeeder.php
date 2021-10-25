@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
 
         // User::factory(5)->create();
-        $this->call([PostSeeder::class]);
+        $this->call([PostSeeder::class, CategorySeeder::class]);
     }
 }
