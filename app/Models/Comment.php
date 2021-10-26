@@ -10,6 +10,12 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'post_id',
+        'body'
+    ];
+
     public function post()
     {
         return $this->belongsTo(Post::class);
@@ -22,6 +28,10 @@ class Comment extends Model
 
     public function getCreatedAtAttribute()
     {
-        return  Carbon::parse($this->attributes['created_at'])->diffForHumans();
+        $date = Carbon::parse($this->attributes['created_at'])->diffForHumans();
+
+        if ($this->attributes['created_at'] < Carbon::now()->subDays(7)) $date = Carbon::parse()->format('F j, Y, g:i a');
+
+        return $date;
     }
 }
