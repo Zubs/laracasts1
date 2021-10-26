@@ -65,7 +65,12 @@
                             class="w-full text-sm focus:outline-none focus:ring"
                             placeholder="Quick, think of something to say!"
                             name="body"
+                            required
                         ></textarea>
+
+                        @error('body')
+                            <x-form-error>{{ $message }}</x-form-error>
+                        @enderror
                     </div>
 
                     <div class="flex justify-end mt-6 border-t border-gray-200 pt-6">
