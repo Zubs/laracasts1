@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('', [PostController::class, 'index'])->name('index');
 Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('show');
+Route::post('/posts/{post:slug}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('register', [RegisterController::class, 'create'])->name('register.create')->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');

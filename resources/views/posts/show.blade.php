@@ -20,7 +20,7 @@
 
             <div class="col-span-8">
                 <div class="hidden lg:flex justify-between mb-6">
-                    <a href="{{ $_SERVER['HTTP_REFERER'] }}"
+                    <a href="{{ $_SERVER['HTTP_REFERER'] ?? '/' }}"
                        class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-blue-500">
                         <svg width="22" height="22" viewBox="0 0 22 22" class="mr-2">
                             <g fill="none" fill-rule="evenodd">
@@ -48,6 +48,14 @@
                     {{ $post->body }}
                 </div>
             </div>
+
+            <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                @include ('includes._comment-form')
+
+                @foreach($post->comments as $comment)
+                    <x-comment :comment="$comment"></x-comment>
+                @endforeach
+            </section>
         </article>
     </main>
 </x-layout>

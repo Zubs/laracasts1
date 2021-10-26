@@ -30,7 +30,7 @@
                                     required
                                 />
                                 @error('email')
-                                    <p class="bg-red-100 border border-red-400 text-red-700 rounded relative mt-2 text-xs">{{ $message }}</p>
+                                    <x-form-error>{{ $message }}</x-form-error>
                                 @enderror
                             </div>
                             <div class="mb-4">
@@ -46,7 +46,7 @@
                                     required
                                 />
                                 @error('password')
-                                    <p class="bg-red-100 border border-red-400 text-red-700 rounded relative mt-2 text-xs">{{ $message }}</p>
+                                    <x-form-error>{{ $message }}</x-form-error>
                                 @enderror
                             </div>
                             <div class="mb-6 text-center">
