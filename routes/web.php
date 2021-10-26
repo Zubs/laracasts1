@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,5 @@ Route::post('login', [LoginController::class, 'store'])->name('login.store')->mi
 Route::redirect('home', '/'); // Cause there's no homepage yet
 
 Route::post('logout', [LogoutController::class, 'destroy'])->name('logout')->middleware('auth');
+
+Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
