@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -17,5 +18,10 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show')->with('post', $post->load('author', 'category', 'comments'))->with('comments', $post->comments->load('author'));
+    }
+
+    public function create()
+    {
+        return view('posts.create')->with('categories', Category::all());
     }
 }
