@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -23,5 +24,22 @@ class PostController extends Controller
     public function create()
     {
         return view('posts.create')->with('categories', Category::all());
+    }
+
+    public function store(Request $request)
+    {
+        $fields = $request->validate([
+            'title' => ['required', 'string', 'min:3', 'unique:posts,title'],
+            'body' => ['required', 'string', 'min:3'],
+            'category_id' => ['required', 'int', 'exists:categories,id']
+        ]);
+
+        $fields['user_id'] = Auth::id();
+        $fields['excerpt'] = null;
+        $fields['slug'] = null;
+
+        $post = Post::create($fields);
+
+        return redirect()->route('index');
     }
 }
