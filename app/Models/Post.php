@@ -18,7 +18,8 @@ class Post extends Model
         'excerpt',
         'slug',
         'category_id',
-        'user_id'
+        'user_id',
+        'thumbnail'
     ];
 
     // Fields that cannot be mass assigned
@@ -65,7 +66,6 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
 
     public function setExcerptAttribute()
     {

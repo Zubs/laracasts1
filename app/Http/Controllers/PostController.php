@@ -31,10 +31,12 @@ class PostController extends Controller
         $fields = $request->validate([
             'title' => ['required', 'string', 'min:3', 'unique:posts,title'],
             'body' => ['required', 'string', 'min:3'],
-            'category_id' => ['required', 'int', 'exists:categories,id']
+            'category_id' => ['required', 'int', 'exists:categories,id'],
+            'thumbnail' => ['required', 'image']
         ]);
 
         $fields['user_id'] = Auth::id();
+        $fields['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
         $fields['excerpt'] = null;
         $fields['slug'] = null;
 

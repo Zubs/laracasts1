@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="POST" action="{{ route('posts.store') }}">
+    <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
@@ -15,6 +15,12 @@
             >
 
             @error('title')
+                <x-form-error>{{ $message }}</x-form-error>
+            @enderror
+
+            <input type="file" name="thumbnail" class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
+
+            @error('thumbnail')
                 <x-form-error>{{ $message }}</x-form-error>
             @enderror
 
