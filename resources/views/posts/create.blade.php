@@ -3,7 +3,7 @@
         @csrf
 
         <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
-        <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+        <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-xl">
             <input
                 class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
                 spellcheck="false"
