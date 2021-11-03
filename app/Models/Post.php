@@ -5,13 +5,22 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
     use HasFactory;
 
     // Fields that can be mass assigned
-    protected $fillable = ['title', 'excerpt', 'body', 'slug'];
+    protected $fillable = [
+        'title',
+        'body',
+        'excerpt',
+        'slug',
+        'category_id',
+        'user_id',
+        'thumbnail'
+    ];
 
     // Fields that cannot be mass assigned
     protected $guarded = ['id'];
@@ -58,9 +67,19 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function setExcerptAttribute()
+    {
+        $this->attributes['excerpt'] = Str::words($this->attributes['body'], 50);
+    }
+
+    public function setSlugAttribute()
+    {
+        $this->attributes['slug'] = Str::slug($this->attributes['title']);
+    }
+
     public function getCreatedAtAttribute()
     {
-        return  Carbon::parse($this->attributes['created_at'])->diffForHumans();
+        return Carbon::parse($this->attributes['created_at'])->diffForHumans();
     }
 
     // Changes the key to be used to find when using route model binding
